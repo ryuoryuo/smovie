@@ -4,10 +4,6 @@ import { withRouter, Link } from "react-router-dom";
 import classnames from "classnames";
 
 class AppMenu extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const location = this.props.location.pathname;
     return (
@@ -27,7 +23,14 @@ class AppMenu extends Component {
             </Link>
           </li>
           <li>
-            <a href="#">Movies</a>
+            <Link
+              to="/movies"
+              className={classnames({
+                active: location === "/movies"
+              })}
+            >
+              Movies
+            </Link>
           </li>
           <li>
             <a href="https://www.themoviedb.org/" target="_noblank">
