@@ -27,4 +27,17 @@
 
 .movie {
   cursor: pointer;
+  max-width: 230px;
+}
+
+@media (max-width: 1024px) {
+  .movie {
+    max-width: 165px;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie {
+    max-width: 140px;
+  }
 }

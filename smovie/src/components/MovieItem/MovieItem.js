@@ -5,7 +5,7 @@ export default class MovieItem extends Component {
   render() {
     const { movie } = this.props;
     return (
-      <div className="movie col-md-2">
+      <div className="movie col-auto mb-4">
         <div className="card">
           <img
             className="card-img-top movie-image"
