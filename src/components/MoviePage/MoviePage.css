@@ -21,3 +21,8 @@
   width: 100px;
   text-align: right;
 }
+
+.movie-tagline {
+  text-transform: uppercase;
+  user-select: none;
+}

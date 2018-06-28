@@ -87,9 +87,22 @@ class MoviePage extends Component {
                   })}
             </div>
 
+            <div className="movie-tagline ml-3 mt-4">
+              {movie.tagline === "" ? null : (
+                <h3 className="text-info text-center">„{movie.tagline}“</h3>
+              )}
+            </div>
+
             <div className="movie-desc ml-3 mt-4">
               {movie.overview === "" ? "No info Available" : movie.overview}
             </div>
+            {movie.vote_average > 0 && (
+              <div className="movie-rating ml-3 mt-5">
+                <h3 className="text-primary">
+                  User Rating: {movie.vote_average}
+                </h3>
+              </div>
+            )}
           </div>
         </div>
       );

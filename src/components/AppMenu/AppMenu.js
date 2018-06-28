@@ -14,7 +14,7 @@ class AppMenu extends Component {
       <div className="sidebar-wrapper col-2">
         <ul className="sidebar-nav">
           <li className="sidebar-brand">
-            <a href="#">SMovie</a>
+            <a href="/">SMovie</a>
           </li>
           <li>
             <Link
@@ -30,10 +30,14 @@ class AppMenu extends Component {
             <a href="#">Movies</a>
           </li>
           <li>
-            <a href="#">IMDB</a>
+            <a href="https://www.themoviedb.org/" target="_noblank">
+              TMDb
+            </a>
           </li>
           <li>
-            <a href="#">Github</a>
+            <a href="https://github.com/ryuoryuo/smovie" target="_noblank">
+              Github
+            </a>
           </li>
           <li>
             <a href="#">About</a>
