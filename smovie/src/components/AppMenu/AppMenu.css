@@ -36,6 +36,11 @@
   transition: all 0.25s ease;
 }
 
+.sidebar-nav li a.active {
+  background: white;
+  color: black;
+}
+
 .sidebar-nav li a::before {
   content: "";
   position: absolute;

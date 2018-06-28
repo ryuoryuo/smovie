@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import "./AppMenu.css";
-
+import { withRouter } from "react-router-dom";
+import classnames from "classnames";
 class AppMenu extends Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
+    const location = this.props.location.pathname;
     return (
       <div className="sidebar-wrapper col-2">
         <ul className="sidebar-nav">
@@ -10,7 +15,14 @@ class AppMenu extends Component {
             <a href="#">SMovie</a>
           </li>
           <li>
-            <a href="#">Main</a>
+            <a
+              href="#"
+              className={classnames({
+                active: location === "/"
+              })}
+            >
+              Main
+            </a>
           </li>
           <li>
             <a href="#">Movies</a>
@@ -30,4 +42,4 @@ class AppMenu extends Component {
   }
 }
 
-export default AppMenu;
+export default withRouter(AppMenu);
