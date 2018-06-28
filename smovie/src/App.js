@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="row">
         <AppMenu />
-        <div className="page-content-wrapper col-md-9 offset-2">
+        <div className="page-content-wrapper col-10 offset-2">
           <div className="container-fluid">
             <AppContent />
           </div>
