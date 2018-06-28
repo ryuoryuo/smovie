@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import MoviesList from "../MoviesList/MoviesList";
 import axios from "axios";
 
-// https://api.themoviedb.org/3/movie/550?api_key=7f540c62c1fdd7d646f8324eb576980c
-
 export default class AppContent extends Component {
   render() {
     return (

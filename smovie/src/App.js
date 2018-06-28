@@ -6,9 +6,9 @@ import AppContent from "./components/AppContent/AppContent";
 class App extends Component {
   render() {
     return (
-      <div className="wrapper">
+      <div className="row">
         <AppMenu />
-        <div className="page-content-wrapper">
+        <div className="page-content-wrapper col-sm-9">
           <div className="container-fluid">
             <AppContent />
           </div>

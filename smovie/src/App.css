@@ -6,6 +6,9 @@ body {
   width: 100%;
 }
 
+.row {
+  margin: auto !important;
+}
 .wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
@@ -25,7 +28,5 @@ body {
 
 .page-content-wrapper {
   width: 100%;
-  position: absolute;
   padding: 15px;
-  margin-left: 250px;
 }

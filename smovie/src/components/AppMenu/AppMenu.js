@@ -4,9 +4,9 @@ import "./AppMenu.css";
 class AppMenu extends Component {
   render() {
     return (
-      <div className="sidebar-wrapper">
+      <div className="sidebar-wrapper col-sm-2">
         <ul className="sidebar-nav">
-          <li className="sidebar-brand mx-auto">
+          <li className="sidebar-brand">
             <a href="#">SMovie</a>
           </li>
           <li>
