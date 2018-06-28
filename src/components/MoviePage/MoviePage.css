@@ -1,0 +1,23 @@
+.poster-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.poster-wrapper {
+  width: 100%;
+  min-height: 600px;
+}
+
+.movie-title {
+  font-family: Poppins, "sans-serif";
+}
+
+.movie-genres {
+  user-select: none;
+}
+
+.movie-country {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+}

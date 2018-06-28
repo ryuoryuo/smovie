@@ -1,0 +1,33 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+.App {
+  width: 100%;
+}
+
+.row {
+  margin: auto !important;
+}
+.wrapper {
+  padding-left: 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.page-content-wrapper {
+  width: 100%;
+  padding: 15px;
+}
