@@ -10,17 +10,20 @@ export default class InputField extends Component {
   }
 
   onChange(e) {
-    this.setState({
-      text: e.target.value
-    });
-
-    this.props.onSearch(this.state.text);
+    this.setState(
+      {
+        text: e.target.value
+      },
+      () => {
+        this.props.onSearch(this.state.text);
+      }
+    );
   }
 
   render() {
     const { onSearch } = this.props;
     return (
-      <div>
+      <div className="mb-3">
         <input
           onChange={this.onChange.bind(this)}
           type="text"
