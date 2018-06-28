@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./MovieItem.css";
+import { Link } from "react-router-dom";
 
 export default class MovieItem extends Component {
   render() {
-    const { movie } = this.props;
+    const { movie, id } = this.props;
 
     // Check if there is no poster for image and set a placeholder if so
     const imagePath =
@@ -15,16 +16,18 @@ export default class MovieItem extends Component {
     }
     return (
       <div className="movie col-auto mb-4">
-        <div className="card">
-          <img className="card-img-top movie-image" src={imagePath} />
-          <div className="overlay">
-            <div className="card-img-overlay h-100 d-flex flex-column">
-              <div className="card-text border-0 text-light text-center">
-                {movie.title}
+        <Link to={`/movie/${movie.id}`}>
+          <div className="card">
+            <img className="card-img-top movie-image" src={imagePath} />
+            <div className="overlay">
+              <div className="card-img-overlay h-100 d-flex flex-column">
+                <div className="card-text border-0 text-light text-center">
+                  {movie.title}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     );
   }

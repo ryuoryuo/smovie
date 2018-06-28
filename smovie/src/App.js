@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import AppMenu from "./components/AppMenu/AppMenu";
+import MoviePage from "./components/MoviePage/MoviePage";
 import AppContent from "./components/AppContent/AppContent";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -14,6 +15,7 @@ class App extends Component {
             <div className="container-fluid">
               <Switch />
               <Route exact path="/" component={AppContent} />
+              <Route path="/movie/:id" component={MoviePage} />
               <Switch />
             </div>
           </div>
