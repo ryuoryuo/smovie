@@ -25,7 +25,8 @@ export default class MoviesList extends Component {
         const splicedMovies = res.data.results.splice(0, 5);
 
         this.setState({
-          movies: splicedMovies
+          movies: splicedMovies,
+          loading: false
         });
       })
       .catch(err => console.log(err));
