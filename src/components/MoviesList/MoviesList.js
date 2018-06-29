@@ -14,7 +14,7 @@ export default class MoviesList extends Component {
     };
   }
 
-  // Function for shuffling array
+  // Fisher-Yates shuffle of array
   shuffle(arr) {
     let tmp,
       current,

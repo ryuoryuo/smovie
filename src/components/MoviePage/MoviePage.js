@@ -22,13 +22,38 @@ class MoviePage extends Component {
       .get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}language=en-US`
       )
-      .then(res => this.setState({ movie: res.data, loading: false }))
-      .catch(err => console.log(err));
+      .then(res => {
+        // Setting movie in state
+        this.setState({ movie: res.data, loading: false });
+
+        // Saving visited page to localStorage
+        let localSaved = localStorage.getItem("movies");
+
+        if (localSaved) {
+          localSaved = localSaved.split(",");
+        } else {
+          localSaved = [];
+        }
+
+        // if current item id not included then add it to array
+        // if included then move it to the start of array
+        if (!localSaved.includes(id)) {
+          localSaved.push(id);
+        } else {
+          localSaved.splice(localSaved.indexOf(id), 1);
+          localSaved.push(id);
+        }
+
+        // Splice array if there is more than 6 saved items in localstorage
+        if (localSaved.length > 6) localSaved = localSaved.slice(-6);
+
+        localStorage.setItem("movies", localSaved.join());
+      })
+      .catch(err => this.props.history.push("/not-found"));
   }
 
   render() {
     const { movie } = this.state;
-    console.log(movie);
 
     // Check if there is no poster for image and set a placeholder if so
     const imagePath =

@@ -11,9 +11,6 @@ export default class MovieItem extends Component {
       movie.poster_path !== null
         ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
         : "https://image.ibb.co/kzBrfT/no_poster.jpg";
-    {
-      if (movie.title === null || movie.title === undefined) console.log(123);
-    }
     return (
       <div className="movie col-auto mb-4">
         <Link to={`/movie/${movie.id}`}>
