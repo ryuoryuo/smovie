@@ -20,12 +20,12 @@ class App extends Component {
             </div>
             <div className="page-content-wrapper col-sm-10 col-12">
               <div className="container-fluid">
-                <Switch />
-                <Route exact path="/" component={AppContent} />
-                <Route path="/movie/:id" component={MoviePage} />
-                <Route path="/movies" component={Movies} />
-                <Route component={NotFound} />
-                <Switch />
+                <Switch>
+                  <Route exact path="/" component={AppContent} />
+                  <Route path="/movie/:id" component={MoviePage} />
+                  <Route path="/movies" component={Movies} />
+                  <Route component={NotFound} />
+                </Switch>
               </div>
             </div>
           </div>
