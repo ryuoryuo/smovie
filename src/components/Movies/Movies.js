@@ -94,7 +94,7 @@ class Movies extends Component {
           loadMore={this.loadFunc}
           hasMore={this.state.hasMoreItems}
           useWindow={true}
-          loader={<Spinner />}
+          loader={<Spinner key={0} />}
           initialLoad={false}
           threshold={550}
         >

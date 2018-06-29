@@ -42,9 +42,6 @@ class AppMenu extends Component {
               Github
             </a>
           </li>
-          <li>
-            <a href="#">About</a>
-          </li>
         </ul>
       </div>
     );
