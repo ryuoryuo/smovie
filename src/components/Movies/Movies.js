@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import InputField from "../common/InputField";
 import axios from "axios";
 import API_KEY from "../../config/keys";
 import MovieItem from "../MovieItem/MovieItem";
 import Spinner from "../common/spinner";
-import classnames from "classnames";
+import InfiniteScroll from "react-infinite-scroller";
 
 class Movies extends Component {
   constructor(props) {
@@ -12,79 +11,94 @@ class Movies extends Component {
 
     this.state = {
       movies: [],
-      loading: true
+      pageLoaded: 1,
+      hasMoreItems: true
     };
 
     this.getData = this.getData.bind(this);
+    this.loadFunc = this.loadFunc.bind(this);
   }
 
   componentDidMount() {
-    // Setting loading to true, then making a request in callback
+    this.getData(API_KEY);
+  }
+
+  getData(api_key) {
+    const { pageLoaded, movies } = this.state;
+
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=${pageLoaded}`
+      )
+      .then(res => {
+        // If current page is more than 1 then just add more results to movie array
+        // instead of fully replacing it
+        if (pageLoaded > 1) {
+          // Slicing results value so it always be a full row of 6 items
+          let currentMovies = movies;
+          currentMovies.results = currentMovies.results.concat(
+            res.data.results.slice(2)
+          );
+
+          this.setState({
+            movies: currentMovies
+          });
+
+          // Activating infinite scroll if current page loaded
+          if (movies.results.length === pageLoaded * 18) {
+            this.setState({
+              hasMoreItems: true
+            });
+          }
+        } else {
+          // Splicing movies results to 18 for getting full rows of items
+          let splicedMovies = res.data;
+          splicedMovies.results = splicedMovies.results.splice(2);
+          this.setState({
+            movies: splicedMovies
+          });
+        }
+      })
+      .catch(err => console.log(err));
+  }
+
+  // Load function for infinite scroll component
+  loadFunc(page) {
     this.setState(
       {
-        loading: true
+        pageLoaded: page
       },
       () => {
         this.getData(API_KEY);
       }
     );
-  }
-
-  getData(api_key) {
-    axios
-      .get(`https://api.themoviedb.org/3/movie/popular?api_key=${api_key}`)
-      .then(res => {
-        this.setState({
-          movies: res.data,
-          loading: false
-        });
-      })
-      .catch(err => console.log(err));
-  }
-
-  onSearch(text) {
-    // Setting loading to true, then making a request in callback
-    this.setState(
-      {
-        loading: true
-      },
-      () => {
-        // If no query param then getting default request
-        if (text === "") {
-          this.getData(API_KEY);
-          return;
-        }
-        axios
-          .get(
-            `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${text}&page=1&include_adult=false`
-          )
-          .then(res => {
-            this.setState({
-              movies: res.data,
-              loading: false
-            });
-          })
-          .catch(err => console.log(err));
-      }
-    );
+    this.setState({ hasMoreItems: false });
   }
 
   render() {
     const { movies } = this.state;
     let moviesContent;
-    moviesContent = <Spinner />;
-    if (!this.state.loading && movies.total_results) {
+
+    // If movies loaded, then map results to the MovieItems
+    if (movies.total_results) {
       moviesContent = movies.results.map(movie => {
         return <MovieItem key={movie.id} movie={movie} />;
       });
-    } else if (movies.total_results === 0) {
-      moviesContent = <h2>No data found</h2>;
     }
 
     return (
       <div>
-        <InputField onSearch={this.onSearch.bind(this)} />
-        <div className="row justify-content-center">{moviesContent}</div>
+        <InfiniteScroll
+          pageStart={0}
+          loadMore={this.loadFunc}
+          hasMore={this.state.hasMoreItems}
+          useWindow={true}
+          loader={<Spinner />}
+          initialLoad={false}
+          threshold={550}
+        >
+          <div className="row justify-content-center">{moviesContent}</div>
+        </InfiniteScroll>
       </div>
     );
   }
