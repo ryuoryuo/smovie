@@ -36,7 +36,7 @@ export default class MoviesList extends Component {
       loading: true
     });
 
-    // Generating random number from 1 to 5 for our API request (so movies wont repeating)
+    // Generating random number from 1 to 5 for our API request (so movies will have much lesser chance to repeat)
     const randomNumber = Math.floor(Math.random() * (5 - 1 + 1) + 1);
     axios
       .get(

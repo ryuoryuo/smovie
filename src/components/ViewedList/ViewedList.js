@@ -39,11 +39,11 @@ class ViewedList extends Component {
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, loading } = this.state;
 
     let moviesContent;
 
-    if (!this.state.loading) {
+    if (!loading) {
       moviesContent = movies.map(movie => {
         return <MovieItem key={movie.id} movie={movie} />;
       });

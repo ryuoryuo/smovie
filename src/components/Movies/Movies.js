@@ -80,7 +80,7 @@ class Movies extends Component {
     const { movies } = this.state;
     let moviesContent;
 
-    // If movies loaded, then map results to the MovieItems
+    // If movies loaded(have total_results field), then map results to the MovieItems
     if (movies.total_results) {
       moviesContent = movies.results.map(movie => {
         return <MovieItem key={movie.id} movie={movie} />;
