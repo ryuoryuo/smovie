@@ -46,13 +46,12 @@ export default class MoviesList extends Component {
       )
       .then(res => {
         // Shuffling array
-        const shuffledMovies = this.shuffle(res.data.results);
-
-        // Getting first 5 elements after shuffling
-        const splicedMovies = shuffledMovies.splice(0, 6);
+        // And getting first 6 elements after shuffling
+        let shuffledMovies = this.shuffle(res.data.results);
+        shuffledMovies.length = 6;
 
         this.setState({
-          movies: splicedMovies,
+          movies: shuffledMovies,
           loading: false
         });
       })

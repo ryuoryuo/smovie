@@ -53,7 +53,8 @@ class Movies extends Component {
         } else {
           // Splicing movies results to 18 for getting full rows of items
           let splicedMovies = res.data;
-          splicedMovies.results = splicedMovies.results.splice(2);
+          splicedMovies.results.length = 18;
+
           this.setState({
             movies: splicedMovies
           });
