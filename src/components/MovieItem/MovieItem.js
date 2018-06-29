@@ -12,7 +12,7 @@ export default class MovieItem extends Component {
         ? `https://image.tmdb.org/t/p/w600_and_h900_bestv2${movie.poster_path}`
         : "https://image.ibb.co/kzBrfT/no_poster.jpg";
     return (
-      <div className="movie col-auto mb-4">
+      <div className="movie mb-4 col-2">
         <Link to={`/movie/${movie.id}`}>
           <div className="card">
             <img className="card-img-top movie-image" src={imagePath} />

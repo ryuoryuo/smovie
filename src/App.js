@@ -11,8 +11,10 @@ class App extends Component {
     return (
       <Router>
         <div className="row">
-          <AppMenu />
-          <div className="page-content-wrapper col-10 offset-2">
+          <div className="col-2 p-0">
+            <AppMenu />
+          </div>
+          <div className="page-content-wrapper col-10">
             <div className="container-fluid">
               <Switch />
               <Route exact path="/" component={AppContent} />
