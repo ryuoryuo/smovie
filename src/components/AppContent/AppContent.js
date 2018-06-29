@@ -10,7 +10,7 @@ export default class AppContent extends Component {
     // getting recently viewed movies from local storage
     let localMovies = localStorage.getItem("movies");
 
-    // If local storage is not empty then split it to array
+    // If local storage is not empty then data to array
     if (localMovies) {
       localMovies = localMovies.split(",");
 
@@ -31,18 +31,25 @@ export default class AppContent extends Component {
         </div>
 
         {viewedContent}
+        {viewedContent && <hr />}
+
         <div className="mt-4">
           <h3>Upcoming Movies</h3>
           <MoviesList list={"upcoming"} />
         </div>
+        <hr />
         <div className="mt-4">
           <h3>Top Rated Movies</h3>
           <MoviesList list={"top_rated"} />
         </div>
+        <hr />
+
         <div className="mt-4">
           <h3>Now Playing Movies</h3>
           <MoviesList list={"now_playing"} />
         </div>
+        <hr />
+
         <div className="mt-4">
           <h3>Popular Movies</h3>
           <MoviesList list={"popular"} />
