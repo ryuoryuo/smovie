@@ -7,7 +7,7 @@ class AppMenu extends Component {
   render() {
     const location = this.props.location.pathname;
     return (
-      <div className="sidebar-wrapper col-2">
+      <div className="sidebar-wrapper col-2 d-none d-sm-block">
         <ul className="sidebar-nav">
           <li className="sidebar-brand">
             <a href="/">SMovie</a>
