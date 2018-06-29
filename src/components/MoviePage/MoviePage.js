@@ -17,7 +17,7 @@ class MoviePage extends Component {
   }
   componentDidMount() {
     this.setState({ loading: true });
-    const id = this.props.match.params.id;
+    const id = this.props.match.params.id.replace(/\D+/g, "");
     axios
       .get(
         `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`

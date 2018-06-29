@@ -10,7 +10,7 @@ export default class AppContent extends Component {
     // getting recently viewed movies from local storage
     let localMovies = localStorage.getItem("movies");
 
-    // If local storage is not empty then data to array
+    // If local storage is not empty then datat to array
     if (localMovies) {
       localMovies = localMovies.split(",");
 
