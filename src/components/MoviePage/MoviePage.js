@@ -80,7 +80,7 @@ class MoviePage extends Component {
             />
           </div>
 
-          <div className="movie-info col-7">
+          <div className="movie-info col-9">
             <div className="row">
               <div className="movie-title col-9">
                 <h1 className="movie-title mb-0">{movie.title}</h1>
