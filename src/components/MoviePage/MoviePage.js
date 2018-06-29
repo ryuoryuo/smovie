@@ -72,7 +72,7 @@ class MoviePage extends Component {
         </div>
       ) : (
         <div className="row">
-          <div className="movie-image col-3">
+          <div className="movie-image col-12 col-md-5 col-xl-3">
             <img
               src={imagePath}
               alt="Movie Poster"
@@ -80,12 +80,12 @@ class MoviePage extends Component {
             />
           </div>
 
-          <div className="movie-info col-9">
+          <div className="movie-info col-12 col-md-7">
             <div className="row">
-              <div className="movie-title col-9">
+              <div className="movie-title p-0 col-12 col-md-8">
                 <h1 className="movie-title mb-0">{movie.title}</h1>
                 {movie.title === movie.original_title ? null : (
-                  <h5 className="movie-title ml-3 text-muted">
+                  <h5 className="movie-title movie-original-title ml-3 text-muted">
                     {movie.original_title}
                   </h5>
                 )}
@@ -94,8 +94,8 @@ class MoviePage extends Component {
                 </p>
               </div>
               {movie.production_countries[0] && (
-                <div className="movie-country col-3">
-                  <h3 className="text-muted mt-2">
+                <div className="movie-country col-md-4 col-12">
+                  <h3 className="text-muted movie-country-name mt-2">
                     {movie.production_countries[0].name}
                   </h3>
                 </div>
