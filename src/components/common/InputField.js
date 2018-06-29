@@ -21,7 +21,6 @@ export default class InputField extends Component {
   }
 
   render() {
-    const { onSearch } = this.props;
     return (
       <div className="mb-3">
         <input

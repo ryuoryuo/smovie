@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MoviesList from "../MoviesList/MoviesList";
 import ViewedList from "../ViewedList/ViewedList";
+import SearchField from "../common/SearchField";
 import axios from "axios";
 
 export default class AppContent extends Component {
@@ -26,6 +27,10 @@ export default class AppContent extends Component {
 
     return (
       <div className="content-wrapper ml-3">
+        <div className="row">
+          <SearchField />
+        </div>
+
         {viewedContent}
         <div className="mt-4">
           <h3>Upcoming Movies</h3>

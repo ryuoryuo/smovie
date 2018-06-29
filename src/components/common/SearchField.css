@@ -1,0 +1,13 @@
+.search-result {
+  z-index: 5;
+  position: absolute;
+}
+.list-group-item {
+  height: 30px;
+  padding: 5px 15px;
+  border-radius: 0 !important;
+}
+
+.search-input {
+  border-radius: 0 !important;
+}
