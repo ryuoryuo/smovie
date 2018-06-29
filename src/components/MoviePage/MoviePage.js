@@ -20,7 +20,7 @@ class MoviePage extends Component {
     const id = this.props.match.params.id;
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
       )
       .then(res => {
         // Setting movie in state
