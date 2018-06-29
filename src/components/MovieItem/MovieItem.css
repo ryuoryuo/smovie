@@ -40,3 +40,8 @@
     max-width: 140px;
   }
 }
+@media all and (max-width: 575px) {
+  .movie {
+    max-width: 110px;
+  }
+}

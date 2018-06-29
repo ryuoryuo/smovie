@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./SearchField.css";
 import axios from "axios";
 import API_KEY from "../../config/keys";
+import { Link } from "react-router-dom";
+import Moment from "react-moment";
 
 export default class SearchField extends Component {
   constructor(props) {
@@ -52,9 +54,28 @@ export default class SearchField extends Component {
   }
 
   render() {
+    const { searchResult } = this.state;
+    let searchContent;
+    console.log(searchResult);
+    searchContent = searchResult.map((item, key) => {
+      return (
+        <Link
+          key={key}
+          className="list-group-item list-group-item-light"
+          to={`/movie/${item.id}`}
+        >
+          <div className="row">
+            <div className="col-10 p-0 m-0 search-title">{item.title}</div>
+            <p className="search-year mb-0 col-2 h6 text-secondary p-0">
+              <Moment format="YYYY">{item.release_date}</Moment>
+            </p>
+          </div>
+        </Link>
+      );
+    });
     return (
       <div className="search-wrapper mb-3 offset-7">
-        <div className="mb-3 col-3 search-result">
+        <div className="mb-3 col-4 search-result">
           <input
             onChange={this.onChange}
             type="text"
@@ -62,14 +83,7 @@ export default class SearchField extends Component {
             className="form-control form-control-sm search-input"
             placeholder="Search movies"
           />
-          <div className="list-group search-list">
-            <a
-              href="#"
-              className="list-group-item list-group-item-action list-group-item-primary"
-            >
-              First item
-            </a>
-          </div>
+          <div className="list-group search-list">{searchContent}</div>
         </div>
       </div>
     );

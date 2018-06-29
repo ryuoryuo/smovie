@@ -50,7 +50,9 @@ class ViewedList extends Component {
     } else {
       moviesContent = <Spinner />;
     }
-    return <div className="row mt-4">{moviesContent}</div>;
+    return (
+      <div className="row mt-4 justify-content-center">{moviesContent}</div>
+    );
   }
 }
 
