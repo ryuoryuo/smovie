@@ -56,7 +56,6 @@ export default class SearchField extends Component {
   render() {
     const { searchResult } = this.state;
     let searchContent;
-    console.log(searchResult);
     searchContent = searchResult.map((item, key) => {
       return (
         <Link
@@ -74,8 +73,8 @@ export default class SearchField extends Component {
       );
     });
     return (
-      <div className="search-wrapper mb-3 offset-7">
-        <div className="mb-3 col-4 search-result">
+      <div className="search-wrapper mb-3 mt-2 mr-5">
+        <div className="mb-3 p-0 search-result ml-3 col-5 col-sm-3 col-md-3">
           <input
             onChange={this.onChange}
             type="text"

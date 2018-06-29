@@ -27,7 +27,7 @@ export default class AppContent extends Component {
 
     return (
       <div className="content-wrapper ml-3">
-        <div className="row">
+        <div className="row justify-content-center">
           <SearchField />
         </div>
 
