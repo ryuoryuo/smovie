@@ -26,7 +26,7 @@ class ViewedList extends Component {
     viewedMovies.forEach(id => {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}language=en-US`
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
         )
         .then(res => {
           // Adding movie data to current movies state
