@@ -5,7 +5,7 @@ import API_KEY from "../../config/keys";
 import Spinner from "../common/spinner";
 import PropTypes from "prop-types";
 
-export default class ViewedList extends Component {
+class ViewedList extends Component {
   constructor(props) {
     super(props);
 
@@ -20,6 +20,7 @@ export default class ViewedList extends Component {
       loading: true
     });
 
+    // Getting viewed movies IDs from props and for each Id getting movie data
     const viewedMovies = this.props.viewedIds;
 
     viewedMovies.forEach(id => {
@@ -28,6 +29,7 @@ export default class ViewedList extends Component {
           `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}language=en-US`
         )
         .then(res => {
+          // Adding movie data to current movies state
           this.setState(prevState => {
             return { movies: [res.data, ...prevState.movies], loading: false };
           });
@@ -41,7 +43,7 @@ export default class ViewedList extends Component {
 
     let moviesContent;
 
-    if (!this.state.loading && movies.length > 0) {
+    if (!this.state.loading) {
       moviesContent = movies.map(movie => {
         return <MovieItem key={movie.id} movie={movie} />;
       });
@@ -53,5 +55,7 @@ export default class ViewedList extends Component {
 }
 
 ViewedList.propTypes = {
-  viewedIds: PropTypes.array.isRequried
+  viewedIds: PropTypes.array.isRequired
 };
+
+export default ViewedList;

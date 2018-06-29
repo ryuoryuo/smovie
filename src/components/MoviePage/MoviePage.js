@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 import API_KEY from "../../config/keys";
 import "./MoviePage.css";
@@ -50,6 +50,10 @@ class MoviePage extends Component {
         localStorage.setItem("movies", localSaved.join());
       })
       .catch(err => this.props.history.push("/not-found"));
+  }
+
+  onGoBack() {
+    this.props.history.goBack();
   }
 
   render() {
@@ -132,7 +136,17 @@ class MoviePage extends Component {
         </div>
       );
 
-    return <div className="poster-wrapper mt-4"> {movieContent} </div>;
+    return (
+      <div className="poster-wrapper mt-4">
+        <a
+          onClick={this.onGoBack.bind(this)}
+          className="btn btn-secondary text-light mb-4 ml-3"
+        >
+          Go back
+        </a>
+        {movieContent}{" "}
+      </div>
+    );
   }
 }
 
