@@ -26,7 +26,7 @@ class MoviePage extends Component {
         // Setting movie in state
         this.setState({ movie: res.data, loading: false });
 
-        // Saving visited page to localStorage
+        // Getting movies list from local storage and split it if there is one
         let localSaved = localStorage.getItem("movies");
 
         if (localSaved) {
@@ -44,8 +44,10 @@ class MoviePage extends Component {
           localSaved.push(id);
         }
 
-        // Splice array if there is more than 6 saved items in localstorage
-        if (localSaved.length > 6) localSaved = localSaved.slice(-6);
+        // Slice array if there is more than 6 saved items in localstorage
+        if (localSaved.length > 6) {
+          localSaved = localSaved.slice(-6);
+        }
 
         localStorage.setItem("movies", localSaved.join());
       })

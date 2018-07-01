@@ -5,6 +5,7 @@ import classnames from "classnames";
 
 class AppMenu extends Component {
   render() {
+    // Location path for active class
     const location = this.props.location.pathname;
     return (
       <div className="sidebar-wrapper col-2 d-none d-sm-block">
