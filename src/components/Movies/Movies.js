@@ -30,9 +30,6 @@ class Movies extends Component {
         `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=${pageLoaded}`
       )
       .then(res => {
-        // If current page is more than 1 then just add more results to movie array
-        // instead of fully replacing it
-
         // Splicing movies results to 18 for getting full rows of items
         let splicedMovies = res.data;
         splicedMovies.results.length = 18;
