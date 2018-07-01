@@ -24,8 +24,7 @@ class Movies extends Component {
   }
 
   getData(api_key) {
-    const { pageLoaded, movies } = this.state;
-
+    const { pageLoaded } = this.state;
     axios
       .get(
         `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=${pageLoaded}`
@@ -33,15 +32,30 @@ class Movies extends Component {
       .then(res => {
         // If current page is more than 1 then just add more results to movie array
         // instead of fully replacing it
-        if (pageLoaded > 1) {
+
+        // Splicing movies results to 18 for getting full rows of items
+        let splicedMovies = res.data;
+        splicedMovies.results.length = 18;
+
+        this.setState({
+          movies: splicedMovies
+        });
+      })
+      .catch(err => console.log(err));
+
+    // Returning new function getData that will always run after first data getting.
+    this.getData = () => {
+      const { pageLoaded, movies } = this.state;
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${api_key}&page=${pageLoaded}`
+        )
+        .then(res => {
           // Slicing results value so it always be a full row of 6 items
-          let currentMovies = movies;
-          currentMovies.results = currentMovies.results.concat(
-            res.data.results.slice(2)
-          );
+          movies.results = movies.results.concat(res.data.results.slice(2));
 
           this.setState({
-            movies: currentMovies
+            movies: movies
           });
 
           // Activating infinite scroll if current page loaded
@@ -50,17 +64,9 @@ class Movies extends Component {
               hasMoreItems: true
             });
           }
-        } else {
-          // Splicing movies results to 18 for getting full rows of items
-          let splicedMovies = res.data;
-          splicedMovies.results.length = 18;
-
-          this.setState({
-            movies: splicedMovies
-          });
-        }
-      })
-      .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+    };
   }
 
   // Load function for infinite scroll component
@@ -90,7 +96,7 @@ class Movies extends Component {
     return (
       <div>
         <InfiniteScroll
-          pageStart={0}
+          pageStart={1}
           loadMore={this.loadFunc}
           hasMore={this.state.hasMoreItems}
           useWindow={true}
